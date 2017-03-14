@@ -20,11 +20,16 @@ static NSString * const kReviewSegueID = @"placeReviewSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.profilePicture.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.profilePicture.layer.shadowOpacity = 0.3;
+    self.profilePicture.layer.shadowRadius = 1;
+    self.profilePicture.layer.shadowOffset = CGSizeMake(0, 3.0f);
+    self.profilePicture.clipsToBounds = YES;
+    
     _dataSourceArray = [NSMutableArray new];
     
     [self setupFIRReferences];
     
-    //
     [self fetchDataForId:[FBSDKProfile currentProfile].userID];
 }
 
@@ -93,13 +98,22 @@ static NSString * const kReviewSegueID = @"placeReviewSegue";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfileCell forIndexPath:indexPath];
+    EKUserProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfileCell forIndexPath:indexPath];
     
     UserPost *postObj = [_dataSourceArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = postObj.placeName;
+    cell.cellPlaceNameLabel.text = postObj.placeName;
+    //    cell.cellAddressLabel.text = postObj.placeName;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70.;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"My Reviewed Places";
 }
 
 #pragma mark - TableView Delegate

@@ -15,7 +15,7 @@
 - (void)styleMap;
 
 /// add marker to map. Choose to have it selected or nah 
-- (void)addMarkerForPlace:(GMSPlace*)place markerSelected:(BOOL)selectMarker;
+- (GMSMarker *)addMarkerForPlace:(GMSPlace*)place markerSelected:(BOOL)selectMarker;
 
 /// remove marker off map
 - (void)removeMarker:(GMSMarker *)marker;

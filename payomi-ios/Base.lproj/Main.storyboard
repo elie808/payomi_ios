@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12113" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C63a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12078"/>
-        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,31 +38,57 @@
                                                 <segue destination="JJj-v8-Xv3" kind="unwind" unwindAction="unwindUserProfileToMap:" id="ClZ-6S-J34"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THIS VIEW IS STILL UNDER CONSTRUCTION..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hE8-F6-QN8">
-                                            <rect key="frame" x="8" y="73" width="359" height="21"/>
-                                            <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="1ce-hv-29Z">
+                                            <rect key="frame" x="132" y="28" width="110" height="110"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="110" id="0BA-Ax-UzE"/>
+                                                <constraint firstAttribute="height" constant="110" id="TNT-JJ-hD8"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="55"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" red="0.30830429339955212" green="0.42474575826219751" blue="0.93176513910293579" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstItem="AhA-Io-nFS" firstAttribute="leading" secondItem="5bB-qy-qc2" secondAttribute="leadingMargin" id="6wR-sZ-0g5"/>
-                                        <constraint firstItem="hE8-F6-QN8" firstAttribute="centerY" secondItem="5bB-qy-qc2" secondAttribute="centerY" id="Dfg-IA-fMf"/>
-                                        <constraint firstItem="hE8-F6-QN8" firstAttribute="leading" secondItem="AhA-Io-nFS" secondAttribute="leading" id="Vbk-Jc-y5S"/>
-                                        <constraint firstAttribute="bottom" secondItem="hE8-F6-QN8" secondAttribute="bottom" constant="72" id="XYt-XG-5LD"/>
-                                        <constraint firstItem="hE8-F6-QN8" firstAttribute="trailing" secondItem="5bB-qy-qc2" secondAttribute="trailingMargin" id="bhS-Ue-DWB"/>
+                                        <constraint firstItem="1ce-hv-29Z" firstAttribute="centerX" secondItem="5bB-qy-qc2" secondAttribute="centerX" id="BaP-9q-nci"/>
+                                        <constraint firstItem="1ce-hv-29Z" firstAttribute="centerY" secondItem="5bB-qy-qc2" secondAttribute="centerY" id="OZW-m9-1bg"/>
                                         <constraint firstItem="AhA-Io-nFS" firstAttribute="top" secondItem="5bB-qy-qc2" secondAttribute="topMargin" id="tJg-7C-Cum"/>
                                     </constraints>
                                 </view>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="bzG-Uo-Gs5" userLabel="footer">
+                                    <rect key="frame" x="0.0" y="264" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="profileCellID" id="Euy-ry-fnE">
-                                        <rect key="frame" x="0.0" y="194" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="profileCellID" rowHeight="70" id="Euy-ry-fnE" customClass="EKUserProfileTableViewCell">
+                                        <rect key="frame" x="0.0" y="194" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Euy-ry-fnE" id="LYF-Es-y0V">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8s-Sy-z8J">
+                                                    <rect key="frame" x="8" y="8" width="359" height="53"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.30830429339999998" green="0.4247457583" blue="0.93176513910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="T8s-Sy-z8J" firstAttribute="top" secondItem="LYF-Es-y0V" secondAttribute="topMargin" id="ScX-OD-RBJ"/>
+                                                <constraint firstItem="T8s-Sy-z8J" firstAttribute="trailing" secondItem="LYF-Es-y0V" secondAttribute="trailingMargin" id="c1Q-uQ-Bk1"/>
+                                                <constraint firstItem="T8s-Sy-z8J" firstAttribute="bottom" secondItem="LYF-Es-y0V" secondAttribute="bottomMargin" id="n39-Sq-bum"/>
+                                                <constraint firstItem="T8s-Sy-z8J" firstAttribute="leading" secondItem="LYF-Es-y0V" secondAttribute="leadingMargin" id="yYE-Uj-FUq"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellPlaceNameLabel" destination="T8s-Sy-z8J" id="kXD-h1-raI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -82,6 +106,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="profilePicture" destination="1ce-hv-29Z" id="bh1-jz-Ltg"/>
                         <outlet property="tableView" destination="7nP-Ap-A92" id="t7J-1E-3sB"/>
                         <segue destination="SYk-Bq-GEK" kind="show" identifier="placeReviewSegue" id="j0W-HD-B2j"/>
                     </connections>
@@ -200,45 +225,48 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtR-Qs-od7" customClass="EKMarkerPersistenceView">
                                 <rect key="frame" x="8" y="501" width="359" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T7-Cc-hIu">
-                                        <rect key="frame" x="275" y="8" width="76" height="64"/>
-                                        <color key="backgroundColor" red="0.2675702568791144" green="0.29177431800408871" blue="0.93176513910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmK-2G-xNE" customClass="EKMapButtons">
+                                        <rect key="frame" x="8" y="12" width="56" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="76" id="8nE-Wd-Jer"/>
+                                            <constraint firstAttribute="width" constant="56" id="sp1-o3-a7A"/>
                                         </constraints>
-                                        <state key="normal" title="REMOVE">
-                                            <color key="titleColor" red="0.82755140250000003" green="0.13725490200000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didTapRemoveMarkerButton:" destination="YtR-Qs-od7" eventType="touchDown" id="JBI-Dt-xIc"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JmK-2G-xNE">
-                                        <rect key="frame" x="19" y="25" width="47" height="30"/>
-                                        <color key="backgroundColor" red="0.26757025690000003" green="0.29177431799999998" blue="0.93176513910000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="47" id="9nS-qj-Opr"/>
-                                        </constraints>
-                                        <state key="normal" title="KEEP">
+                                        <state key="normal" image="keep_marker_icon">
                                             <color key="titleColor" name="alternateSelectedControlColor" catalog="System" colorSpace="catalog"/>
                                         </state>
                                         <connections>
                                             <action selector="didTapKeepMarkerButton:" destination="YtR-Qs-od7" eventType="touchDown" id="PUX-6Q-Scm"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T7-Cc-hIu" customClass="EKMapButtons">
+                                        <rect key="frame" x="295" y="12" width="56" height="56"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="56" id="eVB-LQ-CaV"/>
+                                            <constraint firstAttribute="height" constant="56" id="vDg-Au-rk6"/>
+                                        </constraints>
+                                        <state key="normal" image="delete_marker_icon">
+                                            <color key="titleColor" red="0.82755140250000003" green="0.13725490200000001" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapRemoveMarkerButton:" destination="YtR-Qs-od7" eventType="touchDown" id="JBI-Dt-xIc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="JmK-2G-xNE" firstAttribute="bottom" secondItem="5T7-Cc-hIu" secondAttribute="bottom" id="1qs-Dc-Qbv"/>
                                     <constraint firstAttribute="width" constant="359" id="3PY-Mj-4b6"/>
-                                    <constraint firstItem="5T7-Cc-hIu" firstAttribute="trailing" secondItem="YtR-Qs-od7" secondAttribute="trailingMargin" id="Odf-Jr-FWb"/>
-                                    <constraint firstItem="5T7-Cc-hIu" firstAttribute="top" secondItem="YtR-Qs-od7" secondAttribute="topMargin" id="ZSd-Hd-lkD"/>
-                                    <constraint firstItem="5T7-Cc-hIu" firstAttribute="bottom" secondItem="YtR-Qs-od7" secondAttribute="bottomMargin" id="cS1-jD-aSL"/>
-                                    <constraint firstItem="JmK-2G-xNE" firstAttribute="baseline" secondItem="5T7-Cc-hIu" secondAttribute="firstBaseline" id="ghB-kF-an6"/>
-                                    <constraint firstItem="JmK-2G-xNE" firstAttribute="top" secondItem="YtR-Qs-od7" secondAttribute="top" constant="25" id="iPV-OS-E6T"/>
-                                    <constraint firstItem="JmK-2G-xNE" firstAttribute="leading" secondItem="YtR-Qs-od7" secondAttribute="leading" constant="19" id="o5d-Ox-uhZ"/>
+                                    <constraint firstItem="JmK-2G-xNE" firstAttribute="leading" secondItem="YtR-Qs-od7" secondAttribute="leadingMargin" id="LuN-Lh-YuM"/>
+                                    <constraint firstItem="JmK-2G-xNE" firstAttribute="centerY" secondItem="YtR-Qs-od7" secondAttribute="centerY" id="NT9-98-iob"/>
+                                    <constraint firstItem="5T7-Cc-hIu" firstAttribute="trailing" secondItem="YtR-Qs-od7" secondAttribute="trailingMargin" id="X2F-7U-WBa"/>
                                     <constraint firstAttribute="height" constant="80" id="u0U-6j-KaR"/>
-                                    <constraint firstItem="5T7-Cc-hIu" firstAttribute="baseline" secondItem="JmK-2G-xNE" secondAttribute="firstBaseline" id="xQV-Dd-A9B"/>
+                                    <constraint firstItem="JmK-2G-xNE" firstAttribute="top" secondItem="5T7-Cc-hIu" secondAttribute="top" id="uDt-jD-WzX"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="keepButton" destination="JmK-2G-xNE" id="den-NO-zcQ"/>
+                                    <outlet property="removeButton" destination="5T7-Cc-hIu" id="vZC-ka-kBb"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -349,7 +377,7 @@
                                         <rect key="frame" x="0.0" y="164" width="375" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mxa-Xp-3wX" id="TpV-QL-EsQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ghK-v4-x19">
@@ -506,10 +534,13 @@
     </scenes>
     <resources>
         <image name="backarrow" width="11" height="20"/>
+        <image name="delete_marker_icon" width="150" height="150"/>
         <image name="edit_icon" width="105" height="105"/>
+        <image name="keep_marker_icon" width="128" height="128"/>
         <image name="magnifying_glass" width="128" height="128"/>
+        <image name="profile_pic_placeholder" width="133" height="133"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TRV-aH-FgE"/>
+        <segue reference="j0W-HD-B2j"/>
     </inferredMetricsTieBreakers>
 </document>

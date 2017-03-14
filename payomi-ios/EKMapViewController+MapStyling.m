@@ -60,7 +60,7 @@ static NSString * const kEmojiFace = @"😀";
     }];
 }
 
-- (void)addMarkerForPlace:(GMSPlace*)place markerSelected:(BOOL)selectMarker {
+- (GMSMarker *)addMarkerForPlace:(GMSPlace*)place markerSelected:(BOOL)selectMarker {
     
     UILabel *markerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kMarkerDimmension, kMarkerDimmension)];
     markerLabel.backgroundColor = [UIColor clearColor];
@@ -73,14 +73,12 @@ static NSString * const kEmojiFace = @"😀";
     marker.icon = [UIImage imageFromLabel:markerLabel]; //[UIImage imageNamed:@"smiley_marker"];
     marker.userData = place;
     marker.map = self.mapView;
-//  self.mapView.selectedMarker = marker;
-    
-    // keep the reference to the latest added marker
-//    self.markerPersistenceWindow.selectedMarker = marker;
     
     if (selectMarker) {
         [self.mapView setSelectedMarker:marker];
     }
+    
+    return marker;
 }
 
 - (void)removeMarker:(GMSMarker *)marker {

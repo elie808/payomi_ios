@@ -14,6 +14,7 @@
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
 #import "UIViewController+Helpers.h"
 #import "EKReviewViewController.h"
+#import "EKUserProfileTableViewCell.h"
 #import "Constants.h"
 #import "UserPost.h"
 
@@ -25,5 +26,7 @@
 @property (strong, nonatomic) FIRDatabaseReference *reviewsRef;
 
 @property (strong, nonatomic) NSMutableArray *fetchedCommentsArray;
+
+@property (strong, nonatomic) IBOutlet UIImageView *profilePicture;
 
 @end

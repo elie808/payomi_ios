@@ -10,24 +10,49 @@
 
 @implementation EKMarkerPersistenceView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+- (void)showPersistenceViewInMode:(PersistenceViewMode)mode {
+    
+    self.hidden = NO;
+    
+    switch (mode) {
+        case PersistenceViewModeKeepRemove: {
+            self.keepButton.hidden = NO;
+            self.removeButton.hidden = NO;
+        } break;
+            
+        case PersistenceViewModeKeep: {
+            self.keepButton.hidden = NO;
+            self.removeButton.hidden = YES;
+        } break;
+            
+        case PersistenceViewModeRemove: {
+            self.keepButton.hidden = YES;
+            self.removeButton.hidden = NO;
+        } break;
+            
+        default: break;
+    }
 }
-*/
+
+- (void)hidePersistenceView {
+
+    self.hidden = YES;
+    self.selectedMarker = nil;
+}
 
 - (IBAction)didTapKeepMarkerButton:(id)sender {
     
     if (self.delegate) {
+        
         NSLog(@"TAP KEEEEEEP: %@", self.selectedMarker);
+        [self.delegate didTapKeepMarkerButton:self.selectedMarker.userData];
     }
 }
 
 - (IBAction)didTapRemoveMarkerButton:(id)sender {
   
     if (self.delegate) {
+        
         NSLog(@"TAP REMOOOOOOOVE: %@", self.selectedMarker);
         [self.delegate didTapRemoveMarkerButton:self.selectedMarker];
     }

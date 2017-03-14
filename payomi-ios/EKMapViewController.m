@@ -50,8 +50,9 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
     
     self.buttonsShowing = YES;
     self.profileButton.hidden = YES;
-    self.markerPersistenceWindow.hidden = YES;
+    
     self.markerPersistenceWindow.delegate = self;
+    [self.markerPersistenceWindow hidePersistenceView];
     
     // check if Facebook user logged in
     if ([FBSDKAccessToken currentAccessToken]) {
@@ -88,13 +89,20 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
 #pragma mark - EKMarkerPersistenceViewDelegate methods
 
 - (void)didTapKeepMarkerButton:(GMSPlace *)place {
+
+    [self addPlaceToDB:self.selectedMarker.userData forID:[FBSDKProfile currentProfile].userID];
     
+    self.selectedMarker = nil;
+    [self.markerPersistenceWindow hidePersistenceView];
 }
 
 - (void)didTapRemoveMarkerButton:(GMSMarker *)marker {
     
-    [self removeMarker:marker];
     [self removePlaceFromDB:marker.userData forID:[FBSDKProfile currentProfile].userID];
+    [self removeMarker:marker];
+    
+    self.selectedMarker = nil;
+    [self.markerPersistenceWindow hidePersistenceView];
 }
 
 #pragma mark - Navigation
