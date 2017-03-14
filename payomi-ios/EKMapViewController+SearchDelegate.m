@@ -25,17 +25,15 @@
     
     if ([FBSDKAccessToken currentAccessToken]) {
         
-        // put marker on map
-        [self addMarkerForPlace:place markerSelected:YES];
-        
-//        self.markerPersistenceWindow.hidden = NO;
+        // put marker on map. Keep the reference to the latest added marker
+        self.selectedMarker = [self addMarkerForPlace:place markerSelected:YES];
+        self.markerPersistenceWindow.selectedMarker = self.selectedMarker;        
+        [self.markerPersistenceWindow showPersistenceViewInMode:PersistenceViewModeKeep];
         
         GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:place.coordinate.latitude
                                                                 longitude:place.coordinate.longitude
                                                                      zoom:kMapZoom];
         [self.mapView animateToCameraPosition:camera];
-        
-        [self addPlaceToDB:place forID:[FBSDKProfile currentProfile].userID];
         
     } else {
         

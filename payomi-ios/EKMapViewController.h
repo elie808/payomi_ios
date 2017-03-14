@@ -22,9 +22,10 @@
 @property (strong, nonatomic) GMSMapView *mapView;
 @property (strong, nonatomic) GMSPlacesClient *placesClient;
 
-@property (assign, nonatomic) BOOL buttonsShowing;
-
 @property (strong, nonatomic) NSMutableArray *fetchedPlacesArray;
+
+@property (assign, nonatomic) BOOL buttonsShowing;
+@property (assign, nonatomic) GMSMarker *selectedMarker;
 
 @property (strong, nonatomic) IBOutlet EKMarkerPersistenceView *markerPersistenceWindow;
 

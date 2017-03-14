@@ -20,12 +20,17 @@ static NSString * const kReviewSegueID = @"placeReviewSegue";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.profilePicture.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.profilePicture.layer.shadowOpacity = 0.3;
+    self.profilePicture.layer.shadowRadius = 1;
+    self.profilePicture.layer.shadowOffset = CGSizeMake(0, 3.0f);
+    self.profilePicture.clipsToBounds = YES;
+    
     _dataSourceArray = [NSMutableArray new];
     
     [self setupFIRReferences];
     
-    //
-    [self fetchDataForId:@"616122031907471"];
+    [self fetchDataForId:[FBSDKProfile currentProfile].userID];
 }
 
 #pragma mark - FireBase Setup
@@ -33,7 +38,7 @@ static NSString * const kReviewSegueID = @"placeReviewSegue";
 - (void)setupFIRReferences {
     
     self.dbRef = [[FIRDatabase database] reference];
-    self.reviewsRef = [self.dbRef child:@"userPosts"];
+    self.reviewsRef = [self.dbRef child:kUserProfile];
 }
 
 #pragma mark - Firebase Fetch
@@ -44,21 +49,21 @@ static NSString * const kReviewSegueID = @"placeReviewSegue";
     
     if (facebookID && facebookID.length > 0) {
 
-        [self.reviewsRef observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        FIRDatabaseReference *userCommentsRef = [[self.dbRef child:kUserProfile] child:facebookID];
+        
+        [userCommentsRef observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
 
             if (snapshot.value != [NSNull null]) {
                 
                 NSDictionary *allUserPlaces = snapshot.value;
-                
-                NSDictionary *userPosts = [allUserPlaces valueForKey:[[allUserPlaces allKeys] objectAtIndex:0]];
 
-                if (userPosts && userPosts.count >= 1) {
+                if (allUserPlaces && allUserPlaces.count >= 1) {
                     
-                    for (int i = 0; i < userPosts.count; i++) {
+                    for (int i = 0; i < allUserPlaces.count; i++) {
                         
-                        NSString *placeID = [[userPosts allKeys] objectAtIndex:i];
+                        NSString *placeID = [[allUserPlaces allKeys] objectAtIndex:i];
 
-                        NSDictionary *post = [userPosts valueForKey:placeID];
+                        NSDictionary *post = [allUserPlaces valueForKey:placeID];
 
                         UserPost *postObj = [UserPost new];
                         postObj.placeID = placeID;
@@ -76,8 +81,7 @@ static NSString * const kReviewSegueID = @"placeReviewSegue";
         
     } else {
         
-        [self showMessage:@"Try to re-login into your Facebook account"
-                withTitle:@"Trouble 😮"
+        [self showMessage:@"Try to re-login into your Facebook account" withTitle:@"Trouble 😮"
           completionBlock:^(UIAlertAction *action) {}];
     }
 }
@@ -94,13 +98,22 @@ static NSString * const kReviewSegueID = @"placeReviewSegue";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfileCell forIndexPath:indexPath];
+    EKUserProfileTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kProfileCell forIndexPath:indexPath];
     
     UserPost *postObj = [_dataSourceArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = postObj.placeName;
+    cell.cellPlaceNameLabel.text = postObj.placeName;
+    //    cell.cellAddressLabel.text = postObj.placeName;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70.;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"My Reviewed Places";
 }
 
 #pragma mark - TableView Delegate

@@ -40,7 +40,7 @@ static NSString * const kReviewSegueID = @"reviewSegue";
                                 titleLabelFrame.size.width + 30, // 30 to account for arrow and other elements of infoWindow
                                 infoView.frame.size.height);
     
-    self.markerPersistenceWindow.selectedMarker = marker;
+//    self.markerPersistenceWindow.selectedMarker = marker;
     
     return infoView;
 }
@@ -53,24 +53,19 @@ static NSString * const kReviewSegueID = @"reviewSegue";
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
     
-//    [self removeMarker:marker];
-//    self.markerPersistenceWindow.selectedMarker = marker;
-    self.markerPersistenceWindow.hidden = NO;
+//    self.selectedMarker = marker;
+    self.markerPersistenceWindow.selectedMarker = marker;
+    [self.markerPersistenceWindow showPersistenceViewInMode:PersistenceViewModeRemove];
     
     return NO;
 }
 
 - (void)mapView:(GMSMapView *)mapView didTapAtCoordinate:(CLLocationCoordinate2D)coordinate {
     
-    self.markerPersistenceWindow.selectedMarker = nil;
-    self.markerPersistenceWindow.hidden = YES;
+    [self removeMarker:self.selectedMarker];
+    self.selectedMarker = nil;
+    [self.markerPersistenceWindow hidePersistenceView];
 }
-
-//- (void)mapView:(GMSMapView *)mapView didLongPressInfoWindowOfMarker:(GMSMarker *)marker {
-//    
-//    [self removeMarker:marker];
-//    [self removePlaceFromDB:marker.userData];
-//}
 
 #pragma mark - Camera methods
 
