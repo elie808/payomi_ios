@@ -63,7 +63,6 @@ static CGFloat const kHeaderHeight = 62;
 
     self.commentBox.textColor = [UIColor lightGrayColor];
     self.commentBox.text = kPlaceHolderText;
-    
 
     [self setupFIRReferences];
     

@@ -70,7 +70,7 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
 
 - (void)fetchDataForId:(NSString *)facebookID {
     
-    NSLog(@"\n \n FETCHING DATA...");
+    NSLog(@"------FETCHING DATA...");
     
     if (facebookID && facebookID.length > 0) {
         
@@ -81,6 +81,7 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
             if (snapshot.value != [NSNull null]) {
                 
                 NSDictionary *fetchedPlaces = snapshot.value;
+                NSLog(@"------GOT %lu PLACES", (unsigned long)fetchedPlaces.count);
                 
                 __weak EKMapViewController *weakSelf = self;
                 
