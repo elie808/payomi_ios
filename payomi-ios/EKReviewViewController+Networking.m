@@ -63,12 +63,24 @@ static NSString * const kCommentKey = @"comment";
 
 - (void)addCommentToDB:(Comment*)comment withBlock:(void (^)(Comment * comment))success {
     
+    NSString *facebookID = [FBSDKProfile currentProfile].userID;
+    
     // post comment to commentsTestIDs
     NSDictionary *postDict = @{kUserKey:comment.commenter.username, kCommentKey:comment.review};
+    FIRDatabaseReference *newChildKey = [[[self.dbRef child:kReviewsKey] child:self.placeObj.placeID] child:facebookID];
     
-    FIRDatabaseReference *newChildKey = [[[self.dbRef child:kReviewsKey] child:self.placeObj.placeID]
-                                         child:[FBSDKProfile currentProfile].userID];
+    // add node to User Posts tree
+    FIRDatabaseReference *userPosts = [self.dbRef child:kUserProfile];
+    FIRDatabaseReference *postPlaceID = [[userPosts child:[FBSDKProfile currentProfile].userID] child:self.placeObj.placeID];
+    NSDictionary *userPosted = @{@"placeName":self.placeObj.name, kCommentKey:comment.review, @"date":@"1/1/1989"};
     
+    // add marker to map
+    FIRDatabaseReference *markerWithFBID = [self.dbRef child:kMarkersForUser];
+    FIRDatabaseReference *userFBID = [[markerWithFBID child:facebookID] child:self.placeObj.placeID];
+    NSDictionary *markerDict = @{@"placeID":self.placeObj.placeID, @"comments":@0};
+    
+    
+    //TODO: CONSIDER NESTING ALL REQUESTS
     [newChildKey setValue:postDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
         
         if (!error) {
@@ -76,19 +88,12 @@ static NSString * const kCommentKey = @"comment";
         }
     }];
     
-    // add node to User Posts tree
-    FIRDatabaseReference *userPosts = [self.dbRef child:kUserProfile];
-    
-    FIRDatabaseReference *postPlaceID = [[userPosts child:[FBSDKProfile currentProfile].userID] child:self.placeObj.placeID];
-    NSDictionary *userPosted = @{@"placeName":self.placeObj.name, kCommentKey:comment.review, @"date":@"1/1/1989"};
-    
+
     [postPlaceID setValue:userPosted withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        
-        if (!error) {
-            
-        }
+        if (!error) {}
     }];
-    
+
+    [userFBID setValue:markerDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {}];
 }
 
 @end

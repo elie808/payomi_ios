@@ -83,6 +83,12 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
                 NSDictionary *fetchedPlaces = snapshot.value;
                 NSLog(@"------GOT %lu PLACES", (unsigned long)fetchedPlaces.count);
                 
+                // remove all existing markers
+                [self.mapView clear];
+                self.selectedMarker = nil;
+                self.markerPersistenceWindow.selectedMarker = nil;
+                [self.markerPersistenceWindow hidePersistenceView];
+                
                 __weak EKMapViewController *weakSelf = self;
                 
                 for (int i = 0; i < fetchedPlaces.count; i++) {

@@ -63,7 +63,7 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
         // get user's places
         [self fetchDataForId:[FBSDKProfile currentProfile].userID];
     }
-
+    
     self.loginButton.clipsToBounds = YES;
     self.loginButton.layer.cornerRadius = self.loginButton.frame.size.height/2;
     self.loginButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
