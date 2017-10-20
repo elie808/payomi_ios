@@ -18,5 +18,6 @@ target 'payomi-ios' do
   pod 'FBSDKShareKit'
   pod 'JSONKit'
   pod 'Realm'
+  pod 'AFNetworking'
 
 end
