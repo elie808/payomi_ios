@@ -33,6 +33,7 @@
 		477B81A11E63AA45001A430C /* UserPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 477B81A01E63AA45001A430C /* UserPost.m */; };
 		478137D71E24DDA800304CB2 /* EKLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 478137D61E24DDA800304CB2 /* EKLoginViewController.m */; };
 		4788D3FE1DDCD02A00D4D266 /* InfoWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4788D3FD1DDCD02A00D4D266 /* InfoWindow.xib */; };
+		47C90B3C1F9976C70012C88C /* EKSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 47C90B3B1F9976C70012C88C /* EKSettings.m */; };
 		47D102D31DCFA3B900F76DA5 /* EKMapViewController+Animations.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D102D21DCFA3B900F76DA5 /* EKMapViewController+Animations.m */; };
 		47D509111DDBF72100784D58 /* EKMapButtons.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D509101DDBF72100784D58 /* EKMapButtons.m */; };
 		47D602A31DFF475F00BF3C91 /* UIImage+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 47D602A21DFF475F00BF3C91 /* UIImage+Helpers.m */; };
@@ -94,6 +95,8 @@
 		4788D3FD1DDCD02A00D4D266 /* InfoWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoWindow.xib; sourceTree = "<group>"; };
 		478FC99C1DFBA0E900F0B948 /* payomi-ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "payomi-ios.entitlements"; sourceTree = "<group>"; };
 		47C298651DE8383B0029B5BC /* Singapore location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Singapore location.gpx"; sourceTree = "<group>"; };
+		47C90B3A1F9976C70012C88C /* EKSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKSettings.h; sourceTree = "<group>"; };
+		47C90B3B1F9976C70012C88C /* EKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettings.m; sourceTree = "<group>"; };
 		47D102D11DCFA3B900F76DA5 /* EKMapViewController+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKMapViewController+Animations.h"; sourceTree = "<group>"; };
 		47D102D21DCFA3B900F76DA5 /* EKMapViewController+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKMapViewController+Animations.m"; sourceTree = "<group>"; };
 		47D5090F1DDBF72100784D58 /* EKMapButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapButtons.h; sourceTree = "<group>"; };
@@ -248,6 +251,8 @@
 				47D602A21DFF475F00BF3C91 /* UIImage+Helpers.m */,
 				47708A4B1E25400F009C4230 /* UIViewController+Helpers.h */,
 				47708A4C1E25400F009C4230 /* UIViewController+Helpers.m */,
+				47C90B3A1F9976C70012C88C /* EKSettings.h */,
+				47C90B3B1F9976C70012C88C /* EKSettings.m */,
 				477B819B1E636103001A430C /* Networking */,
 				47F8B0201DCB8C2200B5B635 /* Models */,
 				47D102D01DCFA0AA00F76DA5 /* ViewControllers */,
@@ -486,6 +491,7 @@
 				4716794B1E788233004D4FD5 /* EKUserProfileTableViewCell.m in Sources */,
 				477B81A11E63AA45001A430C /* UserPost.m in Sources */,
 				4747A0A91E61E21000429EC8 /* EKMapViewController+Networking.m in Sources */,
+				47C90B3C1F9976C70012C88C /* EKSettings.m in Sources */,
 				47495E831DCE490C002C061D /* EKReviewTableViewCell.m in Sources */,
 				477B819E1E6361CA001A430C /* EKReviewViewController+Networking.m in Sources */,
 				47E996C01DDB78A90046C47C /* EKReviewHeaderView.m in Sources */,

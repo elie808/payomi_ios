@@ -19,5 +19,6 @@ target 'payomi-ios' do
   pod 'JSONKit'
   pod 'Realm'
   pod 'AFNetworking'
+  pod 'JNKeychain'
 
 end
