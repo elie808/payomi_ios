@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'EB9210BC42165E71DCFF64B6B5F58B00'
+               BlueprintIdentifier = '62B49D01CD0B7A8DC0CE6533BDFF7BC1'
                BlueprintName = 'Pods-payomi-ios'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-payomi-ios.a'>

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "User.h"
+#import "User+Helpers.h"
 
 #import <JNKeychain/JNKeychain.h>
 

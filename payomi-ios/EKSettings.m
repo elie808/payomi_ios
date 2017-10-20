@@ -14,7 +14,7 @@ static NSString * const kLoggedInCustomer   = @"payomi-loggedInUser";
 
 + (BOOL)saveUser:(User *)user {
  
-    NSString *userJSONString = [customer convertToJSON];
+    NSString *userJSONString = [user convertToJSON];
     
     if ([JNKeychain saveValue:userJSONString forKey:kLoggedInCustomer]) {
         
@@ -34,7 +34,7 @@ static NSString * const kLoggedInCustomer   = @"payomi-loggedInUser";
     
     if (userJSONString && userJSONString.length > 0) {
         
-        return [Customer customerFromJSON:userJSONString];
+        return [User userFromJSON:userJSONString];
         
     } else {
         
