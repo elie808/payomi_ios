@@ -83,6 +83,7 @@ PODS:
   - GTMSessionFetcher/Core (1.1.12)
   - JNKeychain (0.1.4)
   - JSONKit (1.4)
+  - JSONModel (1.7.0)
   - leveldb-library (1.18.3)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -108,6 +109,7 @@ DEPENDENCIES:
   - GooglePlaces
   - JNKeychain
   - JSONKit
+  - JSONModel
   - Realm
 
 SPEC CHECKSUMS:
@@ -130,11 +132,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   JNKeychain: fb6cc9ec95959ba46cd95d0ee6f7a05e41da9f42
   JSONKit: 5b69e804ea54d99293eed0fd2ce596c5703fefb0
+  JSONModel: 840bc0fcffb24b8454d2c026bf26fea454b8e98d
   leveldb-library: 10fb39c39e243db4af1828441162405bbcec1404
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 03eef2ee0b674770735cf79d9c4d3659cf6908e8
   Realm: dec0de73be8c57506e39db72694d513c189493b3
 
-PODFILE CHECKSUM: 192d594e248f0ff055b51eaa9f262d0d957d6f4c
+PODFILE CHECKSUM: ec78646e1097eddeeda83cfd1fc965a9c9db57e1
 
 COCOAPODS: 1.1.1

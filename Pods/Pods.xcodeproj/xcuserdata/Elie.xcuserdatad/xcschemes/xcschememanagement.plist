@@ -49,6 +49,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>JSONModel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-payomi-ios.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -76,77 +81,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>3533E070EDBF250FBCB3DD94D370DCE0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3C7B23B3FE0CE1A6131C7E09B3F47DA3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>58E7450DB13C5ECCE92D3C0DF7CF0903</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5AB34BCC2A5390C2CD01D674EE1EBAC0</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>5DC7D7B380A5FEAE815A0DDD986A0174</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6114F7C8E932C8FB4D8F8B320ABA8873</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>951A94FC71DE2A6CE976A89309AECCC6</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E033EDB5EC0819481B0546434FA577B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B87E3957D3DC20F169402C002249CD21</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C3B2C088517D3133533E45B367BD39A9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CF4B35B9FC819386EB09219BC91827D7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DE868725B18AE240E550C5515AE66BC4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DF17CC7F9FEE6CC6E13A41F786715241</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB06743FD599C11559E52D2D552AEE80</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

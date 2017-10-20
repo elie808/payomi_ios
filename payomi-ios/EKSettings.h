@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "User.h"
 
+#import <JNKeychain/JNKeychain.h>
+
 @interface EKSettings : NSObject
 
 + (BOOL)saveUser:(User *)user;
