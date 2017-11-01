@@ -13,12 +13,12 @@
 #import "UIViewController+Helpers.h"
 #import "Constants.h"
 
+#import "User.h"
+
 @interface EKMapViewController (Networking)
 
 - (void)setupFIRReferences;
-- (void)fetchData;
 
-- (void)fetchDataForId:(NSString *)facebookID;
 - (void)removePlaceFromDB:(GMSPlace*)place forID:(NSString*)facebookID;
 - (void)addPlaceToDB:(GMSPlace*)place forID:(NSString*)facebookID;
 

@@ -45,7 +45,16 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
                                     NSLog(@"FB TOKEN: %@", result.token.tokenString);
                                     
                                     self.profileButton.hidden = NO;
-                                    [self fetchDataForId:[FBSDKProfile currentProfile].userID];
+                                    
+                                    [User loginCustomerWithFacebook:result.token.tokenString
+                                                          withBlock:^(User *userObj) {
+                                                              
+                                                          }
+                                                         withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                             
+                                                         }];
+                                    
+//                                    [self fetchDataForId:[FBSDKProfile currentProfile].userID];
                                     
                                     // [self performSegueWithIdentifier:@"unwindSegue" sender:nil];
                                 }
@@ -118,80 +127,6 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
 }
 
 #pragma mark - Firebase Fetch
-
-- (void)fetchDataForId:(NSString *)facebookID {
-    
-    NSLog(@"------FETCHING DATA...");
-    
-    if (facebookID && facebookID.length > 0) {
-        
-        FIRDatabaseReference *tempRef = [[self.dbRef child:kMarkersForUser] child:facebookID];
-        
-        [tempRef observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-            
-            if (snapshot.value != [NSNull null]) {
-                
-                NSDictionary *fetchedPlaces = snapshot.value;
-                NSLog(@"------GOT %lu PLACES", (unsigned long)fetchedPlaces.count);
-                
-                // remove all existing markers
-                [self.mapView clear];
-                self.selectedMarker = nil;
-                self.markerPersistenceWindow.selectedMarker = nil;
-                [self.markerPersistenceWindow hidePersistenceView];
-                
-                __weak EKMapViewController *weakSelf = self;
-                
-                for (int i = 0; i < fetchedPlaces.count; i++) {
-                    
-                    NSDictionary *placeDict = [fetchedPlaces valueForKey:[[fetchedPlaces allKeys] objectAtIndex:i]];
-                    NSString *placeID = [placeDict valueForKey:kPlaceIDDictionarykey];
-                    
-                    // draw markers on map
-                    [self placeForPlaceID:placeID completion:^(GMSPlace *place) {
-                        [weakSelf addMarkerForPlace:place markerSelected:NO];
-                    }];
-                }
-            }
-        }];
-        
-    } else {
-        
-        [self showMessage:@"Try to re-login into your Facebook account"
-                withTitle:@"Trouble 😮"
-          completionBlock:^(UIAlertAction *action) {}];
-    }
-}
-
-- (void)fetchData {
-    
-    NSLog(@"\n \n FETCHING ALL DATA...");
-    
-    FIRDatabaseReference *tempRef = [self.dbRef child:kMarkersForUser];
-    
-    [tempRef observeEventType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
-        
-        if (snapshot.value != [NSNull null]) {
-            
-            NSDictionary *fetchedPlaces = snapshot.value;
-            
-            __weak EKMapViewController *weakSelf = self;
-            
-            for (int i = 0; i < fetchedPlaces.count; i++) {
-                
-                NSDictionary *placeDict = [fetchedPlaces valueForKey:[[fetchedPlaces allKeys] objectAtIndex:i]];
-                NSLog(@"placeDict: %@", placeDict);
-                NSString *placeID = [[placeDict valueForKey:[[placeDict allKeys] objectAtIndex:0]] valueForKey:kPlaceIDDictionarykey];
-                NSLog(@"placeID: %@", placeID);
-                
-                // draw markers on map
-                [self placeForPlaceID:placeID completion:^(GMSPlace *place) {
-                    [weakSelf addMarkerForPlace:place markerSelected:NO];
-                }];
-            }
-        }
-    }];
-}
 
 #pragma mark - Firebase Add/Remove
 
