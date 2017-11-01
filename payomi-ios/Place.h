@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <JSONModel/JSONModel.h>
 
-@interface Place : NSObject
+@interface Place : JSONModel
+
+@property (nonatomic) NSString <Optional> *placeId;
+@property (nonatomic) NSString <Optional> *placeName;
+@property (nonatomic) NSString <Optional> *placeAddress;
+@property (nonatomic) NSString <Optional> *longitude;
+@property (nonatomic) NSString <Optional> *latitude;
 
 @end
