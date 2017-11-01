@@ -11,6 +11,8 @@
 		470E5A1F1F99157D00EDC5E0 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 470E5A1E1F99157C00EDC5E0 /* User.m */; };
 		470E5A221F99195100EDC5E0 /* User+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 470E5A211F99195100EDC5E0 /* User+API.m */; };
 		4716794B1E788233004D4FD5 /* EKUserProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4716794A1E788233004D4FD5 /* EKUserProfileTableViewCell.m */; };
+		471DF37C1FA06DB600FA7F3B /* Place.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DF37B1FA06DB600FA7F3B /* Place.m */; };
+		471DF37F1FA06FBA00FA7F3B /* Place+API.m in Sources */ = {isa = PBXBuildFile; fileRef = 471DF37E1FA06FBA00FA7F3B /* Place+API.m */; };
 		4725E765981AE851A1EB9385 /* libPods-payomi-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FBA842E8FCFF11D9ACD1434 /* libPods-payomi-ios.a */; };
 		472EA3F11DC786B500007CD7 /* map-styling.json in Resources */ = {isa = PBXBuildFile; fileRef = 472EA3F01DC786B500007CD7 /* map-styling.json */; };
 		472EA3F41DC7E45300007CD7 /* EKReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 472EA3F31DC7E45300007CD7 /* EKReviewViewController.m */; };
@@ -56,6 +58,10 @@
 		470E5A211F99195100EDC5E0 /* User+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+API.m"; sourceTree = "<group>"; };
 		471679491E788233004D4FD5 /* EKUserProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKUserProfileTableViewCell.h; sourceTree = "<group>"; };
 		4716794A1E788233004D4FD5 /* EKUserProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKUserProfileTableViewCell.m; sourceTree = "<group>"; };
+		471DF37A1FA06DB600FA7F3B /* Place.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Place.h; sourceTree = "<group>"; };
+		471DF37B1FA06DB600FA7F3B /* Place.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Place.m; sourceTree = "<group>"; };
+		471DF37D1FA06FBA00FA7F3B /* Place+API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Place+API.h"; sourceTree = "<group>"; };
+		471DF37E1FA06FBA00FA7F3B /* Place+API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Place+API.m"; sourceTree = "<group>"; };
 		472EA3F01DC786B500007CD7 /* map-styling.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "map-styling.json"; sourceTree = "<group>"; };
 		472EA3F21DC7E45300007CD7 /* EKReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKReviewViewController.h; sourceTree = "<group>"; };
 		472EA3F31DC7E45300007CD7 /* EKReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKReviewViewController.m; sourceTree = "<group>"; };
@@ -100,6 +106,7 @@
 		47C90B3B1F9976C70012C88C /* EKSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKSettings.m; sourceTree = "<group>"; };
 		47C90B3D1F997E5D0012C88C /* User+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "User+Helpers.h"; sourceTree = "<group>"; };
 		47C90B3E1F997E5D0012C88C /* User+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "User+Helpers.m"; sourceTree = "<group>"; };
+		47C90B401F999AD00012C88C /* EKNetworkingConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKNetworkingConstants.h; sourceTree = "<group>"; };
 		47D102D11DCFA3B900F76DA5 /* EKMapViewController+Animations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EKMapViewController+Animations.h"; sourceTree = "<group>"; };
 		47D102D21DCFA3B900F76DA5 /* EKMapViewController+Animations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EKMapViewController+Animations.m"; sourceTree = "<group>"; };
 		47D5090F1DDBF72100784D58 /* EKMapButtons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKMapButtons.h; sourceTree = "<group>"; };
@@ -147,6 +154,8 @@
 		470E5A231F99195500EDC5E0 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				471DF37D1FA06FBA00FA7F3B /* Place+API.h */,
+				471DF37E1FA06FBA00FA7F3B /* Place+API.m */,
 				470E5A201F99195100EDC5E0 /* User+API.h */,
 				470E5A211F99195100EDC5E0 /* User+API.m */,
 			);
@@ -184,6 +193,8 @@
 				474E8BB81DF1769800C4239A /* EKMapViewController+MapStyling.m */,
 				4732BE941E3306490056C29C /* EKMapViewController+MapDelegate.h */,
 				4732BE951E3306490056C29C /* EKMapViewController+MapDelegate.m */,
+				4747A0A71E61E21000429EC8 /* EKMapViewController+Networking.h */,
+				4747A0A81E61E21000429EC8 /* EKMapViewController+Networking.m */,
 				4732BE971E3306E50056C29C /* EKMapViewController+SearchDelegate.h */,
 				4732BE981E3306E50056C29C /* EKMapViewController+SearchDelegate.m */,
 			);
@@ -283,8 +294,7 @@
 		477B819B1E636103001A430C /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				4747A0A71E61E21000429EC8 /* EKMapViewController+Networking.h */,
-				4747A0A81E61E21000429EC8 /* EKMapViewController+Networking.m */,
+				47C90B401F999AD00012C88C /* EKNetworkingConstants.h */,
 				477B819C1E6361CA001A430C /* EKReviewViewController+Networking.h */,
 				477B819D1E6361CA001A430C /* EKReviewViewController+Networking.m */,
 				470E5A231F99195500EDC5E0 /* API */,
@@ -341,6 +351,8 @@
 				47F8B0221DCB8DDC00B5B635 /* Comment.m */,
 				47F8B01D1DCB8C1B00B5B635 /* Friend.h */,
 				47F8B01E1DCB8C1B00B5B635 /* Friend.m */,
+				471DF37A1FA06DB600FA7F3B /* Place.h */,
+				471DF37B1FA06DB600FA7F3B /* Place.m */,
 				477B819F1E63AA45001A430C /* UserPost.h */,
 				477B81A01E63AA45001A430C /* UserPost.m */,
 				470E5A1D1F99157C00EDC5E0 /* User.h */,
@@ -507,6 +519,7 @@
 				47692E1C1DDD251800D58752 /* EKMapInfoWindow.m in Sources */,
 				47D602A31DFF475F00BF3C91 /* UIImage+Helpers.m in Sources */,
 				47D509111DDBF72100784D58 /* EKMapButtons.m in Sources */,
+				471DF37C1FA06DB600FA7F3B /* Place.m in Sources */,
 				472EA3F41DC7E45300007CD7 /* EKReviewViewController.m in Sources */,
 				47F8B0231DCB8DDC00B5B635 /* Comment.m in Sources */,
 				47F8B01F1DCB8C1B00B5B635 /* Friend.m in Sources */,
@@ -516,6 +529,7 @@
 				478137D71E24DDA800304CB2 /* EKLoginViewController.m in Sources */,
 				47E440C71DD6369300B9A258 /* EKSearchLocationViewController.m in Sources */,
 				47D102D31DCFA3B900F76DA5 /* EKMapViewController+Animations.m in Sources */,
+				471DF37F1FA06FBA00FA7F3B /* Place+API.m in Sources */,
 				4747A0AD1E61EEB500429EC8 /* EKUserProfileViewController.m in Sources */,
 				47682D491DC77A1700A1BD6E /* EKMapViewController.m in Sources */,
 				47682D461DC77A1700A1BD6E /* AppDelegate.m in Sources */,
