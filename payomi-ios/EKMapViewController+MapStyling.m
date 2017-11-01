@@ -60,7 +60,7 @@ static NSString * const kEmojiFace = @"😀";
     }];
 }
 
-- (GMSMarker *)addMarkerForPlace:(GMSPlace*)place markerSelected:(BOOL)selectMarker {
+- (GMSMarker *)addMarkerForGMSPlace:(GMSPlace *)place markerSelected:(BOOL)selectMarker {
     
     UILabel *markerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kMarkerDimmension, kMarkerDimmension)];
     markerLabel.backgroundColor = [UIColor clearColor];
@@ -70,6 +70,36 @@ static NSString * const kEmojiFace = @"😀";
                                                                                  place.coordinate.longitude)];
     marker.title = place.formattedAddress;
     marker.snippet = place.name;
+    marker.icon = [UIImage imageFromLabel:markerLabel]; //[UIImage imageNamed:@"smiley_marker"];
+    marker.userData = place;
+    marker.map = self.mapView;
+    
+    if (selectMarker) {
+        [self.mapView setSelectedMarker:marker];
+    }
+    
+    return marker;
+}
+
+- (GMSMarker *)addMarkerForPlace:(Place *)place markerSelected:(BOOL)selectMarker {
+    
+    UILabel *markerLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kMarkerDimmension, kMarkerDimmension)];
+    markerLabel.backgroundColor = [UIColor clearColor];
+    markerLabel.text = [NSString stringWithFormat:@"%@", kEmojiFace];
+    
+//    GMSMarker *marker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake((CLLocationDegrees)[place.latitude doubleValue],
+//                                                    
+//                                                                                 (CLLocationDegrees)[place.longitude doubleValue])];
+
+    
+    NSLog(@"address: %@", place.placeAddress);
+    
+    GMSMarker *marker = [GMSMarker markerWithPosition:
+                         CLLocationCoordinate2DMake((CLLocationDegrees)40.622425400000004,
+                                                    (CLLocationDegrees)-73.97557189999999)];
+    
+    marker.title = place.placeAddress;
+    marker.snippet = place.placeName;
     marker.icon = [UIImage imageFromLabel:markerLabel]; //[UIImage imageNamed:@"smiley_marker"];
     marker.userData = place;
     marker.map = self.mapView;
@@ -92,31 +122,31 @@ static NSString * const kEmojiFace = @"😀";
     __weak EKMapViewController *weakSelf = self;
     
     [self placeForPlaceID:@"ChIJEeThBBIZ2jERUPxGbQZMkBc" completion:^(GMSPlace *place) {
-        [weakSelf addMarkerForPlace:place markerSelected:NO];
+        [weakSelf addMarkerForGMSPlace:place markerSelected:NO];
     }];
     
     [self placeForPlaceID:@"ChIJuScwyhQZ2jERtyWGpD1pVEs" completion:^(GMSPlace *place) {
-        [weakSelf addMarkerForPlace:place markerSelected:NO];
+        [weakSelf addMarkerForGMSPlace:place markerSelected:NO];
     }];
     
     [self placeForPlaceID:@"ChIJbSX5nxQZ2jER7XXItxRWZLg" completion:^(GMSPlace *place) {
-        [weakSelf addMarkerForPlace:place markerSelected:NO];
+        [weakSelf addMarkerForGMSPlace:place markerSelected:NO];
     }];
     
     [self placeForPlaceID:@"ChIJEeThBBIZ2jERUPxGbQZMkBc" completion:^(GMSPlace *place) {
-        [weakSelf addMarkerForPlace:place markerSelected:NO];
+        [weakSelf addMarkerForGMSPlace:place markerSelected:NO];
     }];
     
     [self placeForPlaceID:@"ChIJvfVMLg0Z2jERkFMLgRq2diw" completion:^(GMSPlace *place) {
-        [weakSelf addMarkerForPlace:place markerSelected:NO];
+        [weakSelf addMarkerForGMSPlace:place markerSelected:NO];
     }];
     
     [self placeForPlaceID:@"ChIJE1u78EMa2jERbEnmDns_vQo" completion:^(GMSPlace *place) {
-        [weakSelf addMarkerForPlace:place markerSelected:NO];
+        [weakSelf addMarkerForGMSPlace:place markerSelected:NO];
     }];
     
     [self placeForPlaceID:@"ChIJdZOLiiMR2jERxPWrUs9peIg" completion:^(GMSPlace *place) {
-        [weakSelf addMarkerForPlace:place markerSelected:NO];
+        [weakSelf addMarkerForGMSPlace:place markerSelected:NO];
     }];
 }
 
