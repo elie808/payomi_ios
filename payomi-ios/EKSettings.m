@@ -63,26 +63,26 @@ static NSString * const kLoggedInCustomer   = @"payomi-loggedInUser";
     }
 }
 
-//+ (BOOL)updateSavedUser:(User *)updatedUser {
-//    
-//    Customer *oldUser = [EKSettings getSavedCustomer];
-//    
-//    Customer *userToPersist = [Customer updateCustomer:oldUser from:updatedCustomer];
-//    
-//    NSString *userJSONString = [userToPersist convertToJSON];
-//    
-//    if ([JNKeychain saveValue:userJSONString forKey:kLoggedInCustomer]) {
-//        
-//        NSLog(@"Customer updated and persisted!");
-//        return YES;
-//        
-//    } else {
-//        
-//        NSLog(@"Failed to update and persist Customer!");
-//        return NO;
-//    }
-//    
-//    return NO;
-//}
++ (BOOL)updateSavedUser:(User *)updatedUser {
+    
+    User *oldUser = [EKSettings getSavedUser];
+    
+    User *userToPersist = [User updateUser:oldUser from:updatedUser];
+    
+    NSString *userJSONString = [userToPersist convertToJSON];
+    
+    if ([JNKeychain saveValue:userJSONString forKey:kLoggedInCustomer]) {
+        
+        NSLog(@"Customer updated and persisted!");
+        return YES;
+        
+    } else {
+        
+        NSLog(@"Failed to update and persist Customer!");
+        return NO;
+    }
+    
+    return NO;
+}
 
 @end
