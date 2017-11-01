@@ -7,9 +7,15 @@
 //
 
 #import "User.h"
+#import "EKNetworkingConstants.h"
 #import <AFNetworking/AFNetworking.h>
 
+typedef void (^UserSignUpSuccessBlock)(User *userObj);
+typedef void (^UserSignUpErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
+
 @interface User (API)
+
++ (void)loginCustomerWithFacebook:(NSString *)fbToken withBlock:(UserSignUpSuccessBlock)successBlock withErrors:(UserSignUpErrorBlock)errorBlock;
 
 /*
  - (void)fetchDataForId:(NSString *)facebookID;

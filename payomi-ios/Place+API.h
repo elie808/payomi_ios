@@ -7,7 +7,14 @@
 //
 
 #import "Place.h"
+#import "EKNetworkingConstants.h"
+#import <AFNetworking/AFNetworking.h>
+
+typedef void (^PlaceSuccessBlock)(NSArray <Place *> *placesArray);
+typedef void (^PlaceErrorBlock)(NSError *error, NSString *errorMessage, NSInteger statusCode);
 
 @interface Place (API)
+
++ (void)getPlacesForUser:(NSString *)token withBlock:(PlaceSuccessBlock)successBlock withErrors:(PlaceErrorBlock)errorBlock;
 
 @end

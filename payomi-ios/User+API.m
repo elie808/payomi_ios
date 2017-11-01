@@ -24,6 +24,44 @@
 //             NSLog(@"Error: %@", error);
 //         }];
 
++ (void)loginCustomerWithFacebook:(NSString *)fbToken withBlock:(UserSignUpSuccessBlock)successBlock withErrors:(UserSignUpErrorBlock)errorBlock {
+    
+    AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]
+                                     initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+//    Login *user = [User new];
+//    user.email = @"fouad.kada@gmail.com";
+//    user.password = @"password";
+//    NSDictionary *dict = [user toDictionary];
+    
+    NSDictionary *dict = @{@"fbToken":fbToken};
+    
+    [manager POST:[NSString stringWithFormat:@"%@%@", kBaseURL, kUserFacebookLoginAPIPath]
+       parameters:dict
+         progress:nil
+          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+              
+              NSLog(@"success!");
+              
+              NSError *error;
+              User *userObj = [[User alloc] initWithDictionary:responseObject error:&error];
+              
+              NSLog(@"USER.fName: %@", userObj.firstName);
+              NSLog(@"USER.lName: %@", userObj.lastName);
+              
+              successBlock(userObj);
+              
+//              NSLog(@"country.profileComplete: %@", country.profileComplete ? @"YES" : @"NO");
+              
+          } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+              
+              NSLog(@"error: %@", error);
+          }];
+}
+
 /*
 AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc]
                                  initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
