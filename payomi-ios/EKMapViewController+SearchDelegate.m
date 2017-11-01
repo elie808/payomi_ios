@@ -23,10 +23,12 @@
     
     [self dismissViewControllerAnimated:YES completion:nil];
     
+    NSLog(@"\n %@ \n %@ \n %@ \n %f \n %f", place.placeID, place.name, place.formattedAddress, place.coordinate.longitude, place.coordinate.latitude);
+    
     if ([FBSDKAccessToken currentAccessToken]) {
         
         // put marker on map. Keep the reference to the latest added marker
-        self.selectedMarker = [self addMarkerForPlace:place markerSelected:YES];
+        self.selectedMarker = [self addMarkerForGMSPlace:place markerSelected:YES];
         self.markerPersistenceWindow.selectedMarker = self.selectedMarker;        
         [self.markerPersistenceWindow showPersistenceViewInMode:PersistenceViewModeKeep];
         
