@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Place.h"
 @import GoogleMaps;
 @import GooglePlaces;
 
@@ -17,8 +18,9 @@ typedef NS_ENUM(NSInteger, PersistenceViewMode) {
 };
 
 @protocol EKMarkerPersistenceViewDelegate <NSObject>
-- (void)didTapKeepMarkerButton:(GMSPlace *)place;
+//- (void)didTapKeepMarkerButton:(GMSPlace *)place;
 - (void)didTapRemoveMarkerButton:(GMSMarker *)marker;
+- (void)didTapKeepMarkerButton:(Place *)place;
 @end
 
 @interface EKMarkerPersistenceView : UIView

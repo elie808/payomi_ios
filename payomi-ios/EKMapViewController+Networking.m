@@ -130,41 +130,4 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
 
 #pragma mark - Firebase Add/Remove
 
-- (void)addPlaceToDB:(GMSPlace*)place forID:(NSString*)facebookID {
-    
-    NSDictionary *postDict = @{kPlaceIDDictionarykey:place.placeID, @"comments":@0};
-    
-    FIRDatabaseReference *markerWithFBID = [self.dbRef child:kMarkersForUser];
-    
-    if (facebookID && facebookID.length > 0) {
-        
-        FIRDatabaseReference *userFBID = [[markerWithFBID child:facebookID] child:place.placeID];
-        [userFBID setValue:postDict withCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {}];
-        
-    } else {
-        
-        [self showMessage:@"Try to re-login to your Facebook account" withTitle:@"Trouble 😮" completionBlock:^(UIAlertAction *action) {}];
-    }
-}
-
-- (void)removePlaceFromDB:(GMSPlace*)place forID:(NSString*)facebookID {
-    
-    if (facebookID && facebookID.length > 0) {
-        
-        FIRDatabaseReference *commentsRef = [[[self.dbRef child:kReviewsKey] child:place.placeID] child:facebookID];
-        FIRDatabaseReference *markerRef = [[[self.dbRef child:kMarkersForUser] child:facebookID] child:place.placeID];
-        FIRDatabaseReference *userPostRef = [[[self.dbRef child:@"UserProfileVC"] child:facebookID] child:place.placeID];
-        
-        [userPostRef removeValueWithCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        }];
-        
-        [markerRef removeValueWithCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        }];
-        
-        [commentsRef removeValueWithCompletionBlock:^(NSError * _Nullable error, FIRDatabaseReference * _Nonnull ref) {
-        }];
-        
-    }
-}
-
 @end

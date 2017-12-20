@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Pods/JSONModel/JSONModel/JSONModel/JSONModel.m"
-            timestampString = "531222791.104826"
+            filePath = "payomi-ios/EKMarkerPersistenceView.m"
+            timestampString = "531247095.636066"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-initWithDictionary:error:"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "-didTapKeepMarkerButton:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

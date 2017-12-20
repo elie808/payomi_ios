@@ -45,7 +45,18 @@
     if (self.delegate) {
         
         NSLog(@"TAP KEEEEEEP: %@", self.selectedMarker);
-        [self.delegate didTapKeepMarkerButton:self.selectedMarker.userData];
+        
+        GMSPlace *gmsPlace = (GMSPlace *)self.selectedMarker.userData;
+        
+        // convert GMSPlace (saved inside the the userData property for the selected GMSMarker) into a Place object
+        Place *placeObj = [Place new];
+        placeObj.placeId = gmsPlace.placeID;
+        placeObj.placeName = gmsPlace.name;
+        placeObj.placeAddress = gmsPlace.formattedAddress;
+        placeObj.latitude = [NSString stringWithFormat:@"%f", gmsPlace.coordinate.latitude];
+        placeObj.longitude = [NSString stringWithFormat:@"%f", gmsPlace.coordinate.longitude];
+        
+        [self.delegate didTapKeepMarkerButton:placeObj];
     }
 }
 

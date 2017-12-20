@@ -87,16 +87,17 @@ static NSString * const kEmojiFace = @"😀";
     markerLabel.backgroundColor = [UIColor clearColor];
     markerLabel.text = [NSString stringWithFormat:@"%@", kEmojiFace];
     
-//    GMSMarker *marker = [GMSMarker markerWithPosition:CLLocationCoordinate2DMake((CLLocationDegrees)[place.latitude doubleValue],
-//                                                    
-//                                                                                 (CLLocationDegrees)[place.longitude doubleValue])];
-
-    
     NSLog(@"address: %@", place.placeAddress);
     
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
+    
+    NSNumber *lat = [f numberFromString:place.latitude];
+    NSNumber *lon = [f numberFromString:place.longitude];
+    
     GMSMarker *marker = [GMSMarker markerWithPosition:
-                         CLLocationCoordinate2DMake((CLLocationDegrees)40.622425400000004,
-                                                    (CLLocationDegrees)-73.97557189999999)];
+                         CLLocationCoordinate2DMake((CLLocationDegrees)lat.floatValue,
+                                                    (CLLocationDegrees)lon.floatValue)];
     
     marker.title = place.placeAddress;
     marker.snippet = place.placeName;

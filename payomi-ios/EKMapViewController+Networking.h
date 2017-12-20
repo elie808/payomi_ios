@@ -19,9 +19,6 @@
 
 - (void)setupFIRReferences;
 
-- (void)removePlaceFromDB:(GMSPlace*)place forID:(NSString*)facebookID;
-- (void)addPlaceToDB:(GMSPlace*)place forID:(NSString*)facebookID;
-
 - (void)loginToFacebook;
 - (void)logoutOfFacebook;
 

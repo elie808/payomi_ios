@@ -7,13 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EKMapButtons.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 @import GoogleMaps;
 @import GooglePlaces;
 @import Firebase;
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
 #import "EKMarkerPersistenceView.h"
+#import "EKMapButtons.h"
+
+#import "User.h"
+#import "Place.h"
+
+#import "User+API.h"
+#import "Place+API.h"
 
 @interface EKMapViewController : UIViewController <UIGestureRecognizerDelegate, EKMarkerPersistenceViewDelegate>
 

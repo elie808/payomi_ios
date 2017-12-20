@@ -11,6 +11,7 @@
 
 @interface Place : JSONModel
 
+@property (nonatomic) NSString <Optional> *_key;
 @property (nonatomic) NSString <Optional> *placeId;
 @property (nonatomic) NSString <Optional> *placeName;
 @property (nonatomic) NSString <Optional> *placeAddress;

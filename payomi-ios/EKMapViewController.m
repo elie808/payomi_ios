@@ -54,6 +54,7 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
     self.markerPersistenceWindow.delegate = self;
     [self.markerPersistenceWindow hidePersistenceView];
     
+    //TODO: REPLACE
     // check if Facebook user logged in
     if ([FBSDKAccessToken currentAccessToken]) {
         
@@ -61,7 +62,21 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
         [self.loginButton setProfileID:@"me"];
         
         // get user's places
-        [self fetchDataForId:[FBSDKProfile currentProfile].userID];
+        [Place getPlacesForUser:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJ1c2Vycy8xMTI3NTcwIiwiaWF0IjoxNTA4NjcyMTEwLCJleHAiOjE1NTE4NzIxMTB9.t9Aoz4IbW87pRMqEfrvsfEbUdF45qke1j2AA-uhnhX8"
+                      withBlock:^(NSArray<Place *> *placesArray) {
+                          
+                          // remove all existing markers
+                          [self.mapView clear];
+                          self.selectedMarker = nil;
+                          self.markerPersistenceWindow.selectedMarker = nil;
+                          [self.markerPersistenceWindow hidePersistenceView];
+                          
+                          for (Place *place in placesArray)
+                              [self addMarkerForPlace:place markerSelected:NO];
+                          
+                      } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                          
+                      }];
     }
     
     self.loginButton.clipsToBounds = YES;
@@ -88,17 +103,34 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
 
 #pragma mark - EKMarkerPersistenceViewDelegate methods
 
-- (void)didTapKeepMarkerButton:(GMSPlace *)place {
+- (void)didTapKeepMarkerButton:(Place *)place {
 
-    [self addPlaceToDB:self.selectedMarker.userData forID:[FBSDKProfile currentProfile].userID];
+    [Place addPlace:place
+            forUser:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJ1c2Vycy8xMTI3NTcwIiwiaWF0IjoxNTA4NjcyMTEwLCJleHAiOjE1NTE4NzIxMTB9.t9Aoz4IbW87pRMqEfrvsfEbUdF45qke1j2AA-uhnhX8"
+          withBlock:^(Place *placeObj) {
+              
+              [self addMarkerForPlace:placeObj markerSelected:YES];
+              
+          } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+              [self showMessage:errorMessage withTitle:@"Error" completionBlock:nil];
+          }];
     
     self.selectedMarker = nil;
     [self.markerPersistenceWindow hidePersistenceView];
 }
 
 - (void)didTapRemoveMarkerButton:(GMSMarker *)marker {
+
+    Place *placeObj = (Place *)marker.userData;
     
-    [self removePlaceFromDB:marker.userData forID:[FBSDKProfile currentProfile].userID];
+    [Place removePlace:placeObj
+               forUser:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJ1c2Vycy8xMTI3NTcwIiwiaWF0IjoxNTA4NjcyMTEwLCJleHAiOjE1NTE4NzIxMTB9.t9Aoz4IbW87pRMqEfrvsfEbUdF45qke1j2AA-uhnhX8"
+             withBlock:^{
+                 
+             } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                
+            }];
+    
     [self removeMarker:marker];
     
     self.selectedMarker = nil;
@@ -167,7 +199,9 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
                                                                 if ([FBSDKAccessToken currentAccessToken]) {
                                                                     
                                                                     [self.mapView clear];
-                                                                    [self fetchDataForId:[FBSDKProfile currentProfile].userID];
+                                                                    //TODO: GET MY PLACES (ME)
+//                                                                    [self fetchDataForId:[FBSDKProfile currentProfile].userID];
+                                                                    
                                                                 } else {
                                                                     
                                                                     [self showMessage:@"You'll need to sign in first !"
@@ -183,7 +217,25 @@ static NSString * const kPlaceIDDictionarykey = @"placeID";
                                                                   if ([FBSDKAccessToken currentAccessToken]) {
                                                                   
                                                                       [self.mapView clear];
-                                                                      [self fetchData];
+                                                                      //TODO: GET PLACES. CHANGE TOKEN
+                                                                      [Place getPlacesForUser:@"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJ1c2Vycy8xMTI3NTcwIiwiaWF0IjoxNTA4NjcyMTEwLCJleHAiOjE1NTE4NzIxMTB9.t9Aoz4IbW87pRMqEfrvsfEbUdF45qke1j2AA-uhnhX8"
+                                                                                    withBlock:^(NSArray<Place *> *placesArray) {
+                                                                                        
+                                                                                        // remove all existing markers
+                                                                                        [self.mapView clear];
+                                                                                        self.selectedMarker = nil;
+                                                                                        self.markerPersistenceWindow.selectedMarker = nil;
+                                                                                        [self.markerPersistenceWindow hidePersistenceView];
+                                                                                        
+                                                                                        //                          for (int i = 0; i < placesArray.count; i++) {
+                                                                                        
+                                                                                        for (Place *place in placesArray) {
+                                                                                            [self addMarkerForPlace:place markerSelected:NO];
+                                                                                        }
+                                                                                        
+                                                                                    } withErrors:^(NSError *error, NSString *errorMessage, NSInteger statusCode) {
+                                                                                        
+                                                                                    }];
                                                                   
                                                                   } else {
                                                                       

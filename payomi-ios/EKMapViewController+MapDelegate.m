@@ -47,13 +47,13 @@ static NSString * const kReviewSegueID = @"reviewSegue";
 
 - (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
     
-    GMSPlace *place = (GMSPlace*)marker.userData;
+    Place *place = (Place*)marker.userData;
     [self performSegueWithIdentifier:kReviewSegueID sender:place];
 }
 
 - (BOOL)mapView:(GMSMapView *)mapView didTapMarker:(GMSMarker *)marker {
     
-//    self.selectedMarker = marker;
+    Place *place = (Place *)marker.userData;
     self.markerPersistenceWindow.selectedMarker = marker;
     [self.markerPersistenceWindow showPersistenceViewInMode:PersistenceViewModeRemove];
     
